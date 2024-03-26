@@ -13,7 +13,6 @@ python bayesfit.py
 ```
 the program will prompt you for options (pressing enter gives you the default option).       
 Alternatively, the input can be given via an inputfile (a plain text file): 
-
 ```
 python bayesfit.py < inputfile.txt
 ```
@@ -32,7 +31,9 @@ line K+6: fit data (default: yes)
 line K+7: fit posterior distributions (default: no)
 line K+8: weight scheme (default: 0, i.e. weight by chi2r)    
 ```
-E.g. to fit the simulated data of monodisperse cylinders (parameters: radius, length, scale and background) use:    
+## Examples
+
+to fit the simulated data of monodisperse cylinders (parameters: radius, length, scale and background) use input_cylinder.txt:    
 
 ```
 output_fit_fylinder
@@ -48,11 +49,13 @@ yes
 no
 0
 ```
-
-## Examples
+and run bayesapp using this inputfile:    
+```
+python bayesfit.py < input_cylinder.txt
 ```
 
-```
+
+
 ### Cite 
 please cite:
 * Larsen, Arleth and Hansen 2018:     
