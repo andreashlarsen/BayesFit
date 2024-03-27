@@ -102,8 +102,7 @@ no
 0
 ```
 
-
-### Cite 
+### If you use BayesFit, please cite 
 please cite:
 * Larsen, Arleth and Hansen 2018:     
   * https://doi.org/10.1107/S1600576718008956
