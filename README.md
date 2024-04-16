@@ -71,7 +71,7 @@ no
 ```
 and run bayesapp using this inputfile:    
 ```
-python bayesfit.py < input_cylinder.txt
+python bayesfit.py < examples/input_cylinder.txt
 ```
 
 ### core-multishell model, two datasets 
@@ -100,6 +100,10 @@ coreshell4_ratio_2
 yes
 no
 0
+```
+and run bayesapp using this inputfile:    
+```
+python bayesfit.py < examples/input_coreshell.txt
 ```
 
 ### If you use BayesFit, please cite 
