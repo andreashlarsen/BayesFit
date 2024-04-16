@@ -57,7 +57,7 @@ line 15: information content of dataset 2 (only used if weighting scheme is set 
 
 ### cylinder model, single dataset
 data were simulated using Shape2SAS and is available in the example folder.    
-to fit the simulated data of monodisperse cylinders (parameters: radius, length, scale and background) use input_cylinder.txt:     
+to fit the simulated data of monodisperse cylinders (parameters: radius, length, scale and background), use input_cylinder.txt:     
 ```
 output_fit_fylinder
 1
@@ -70,6 +70,7 @@ cylinder
 -5 5 20
 yes
 no
+
 ```
 and run bayesapp using this inputfile:    
 ```
@@ -112,7 +113,7 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 ### If you use BayesFit, please cite 
 * Larsen, Arleth and Hansen 2018 (BayesFit version 1):     
   * https://doi.org/10.1107/S1600576718008956
-* Larsen 2024 (BayesFit version 2):    
+* Larsen 2024 (BayesFit version 2 - this version):    
   * https://arxiv.org/abs/2311.06408
  
 ### Release notes     
