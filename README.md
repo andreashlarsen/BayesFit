@@ -122,7 +122,8 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 * allow for simultaneous fitting of multiple datasets
 
 ##### version 2.7
-* reorganization of helpfunctions    
+* reorganization of helpfunctions
+* addition of examples       
 
 
 
