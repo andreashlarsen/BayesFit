@@ -108,6 +108,15 @@ please cite:
   * https://doi.org/10.1107/S1600576718008956
 * Larsen 2024:    
   * https://arxiv.org/abs/2311.06408
+ 
+### Version 2
+BayesFit version 1 was used was used in the publication Larsen, Arleth Hansen 2018.     
+BayesFit version 2 major updates:    
+* written in python3 instead of Fortran77    
+* documented (here and in the code)    
+* allow for simultaneous fitting of multiple datasets
+
+#### version 2.x
 
 
 
