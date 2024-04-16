@@ -5,7 +5,11 @@ version 2.6
 BayesFit allow users to fit analytical models (form factors and structure factors) to SAXS and/or SANS data using Bayesian refinement.
 
 ## Installation
-Download the scripts from this repository and run BayesFit as a standard python3 script: 
+Download the scripts from this repository and run BayesFit as a standard Python3 script.  
+The following python scripts should be in the same folder as bayesfit.py:    
+* bayesfit_functions.py
+* function.py
+* formfactors.py
 
 ## Running the program
 ```
