@@ -110,7 +110,6 @@ python bayesfit.py < examples/input_coreshell.txt
 ```
 
 ### If you use BayesFit, please cite 
-please cite:
 * Larsen, Arleth and Hansen 2018 (BayesFit version 1):     
   * https://doi.org/10.1107/S1600576718008956
 * Larsen 2024 (BayesFit version 2):    
