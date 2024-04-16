@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.special import jv
-from numpy import exp, sin, cos, sqrt
+from numpy import exp,sin,cos,sqrt,pi
 import time
 
 ####################################################################
@@ -39,8 +39,6 @@ def sinc(x):
     """
     return np.sinc(x/np.pi)
 
-pi = np.pi
-
 ####################################################################
 # sphere
 ####################################################################
@@ -50,7 +48,7 @@ def psi_sphere(q,r):
     Form factor amplitude of a sphere
     """
     x = q*r     
-    return 3*(np.sin(x)-x*np.cos(x))/x**3
+    return 3*(sin(x)-x*cos(x))/x**3
     
 def P_sphere(q,r):
     """
@@ -62,7 +60,7 @@ def V_sphere(r):
     """
     Volume of a sphere
     """
-    return 4*r**3*np.pi/3
+    return 4*r**3*pi/3
 
 def sphere2(q,r,s):
     """
@@ -85,7 +83,7 @@ def V_cyl(R,L):
     """
     Volume of a cylinder with radius R and length L
     """
-    return np.pi*R**2*L
+    return pi*R**2*L
 
 def psi_cyl(q,R,L,a):
     """ 
@@ -103,7 +101,7 @@ def P_cyl(q,R,L):
     form factor: cylinder with radius R and length L
     """
     N_alpha = 30
-    alpha = np.linspace(0,np.pi/2,N_alpha)
+    alpha = np.linspace(0,pi/2,N_alpha)
     P_sum = 0
     for a in alpha:
         P_sum += psi_cyl(q,R,L,a)**2*sin(a)
@@ -155,7 +153,7 @@ def P_stacked_2cyl(q,R1,R2,L1,L2,p1,p2):
     R2,L2: radius and lenght of second cyl
     """
 
-    N_alpha,alpha_max = 50,np.pi/2
+    N_alpha,alpha_max = 50,pi/2
     alpha = np.linspace(alpha_max/N_alpha,alpha_max,N_alpha)
 
     # this is slower than a simple for loop 
@@ -302,7 +300,7 @@ def psi_cylinder_trimer(q,R,L1,L2,L3,p1,p2,p3,a,b):
     d = 2*R
     pf1 = 1.0
     pf2 = np.exp(1j*q*d*sin(a)*cos(b)) 
-    pos3 = cos(b)*cos(np.pi/3.0)+sin(b)*sin(np.pi/3.0)
+    pos3 = cos(b)*cos(pi/3.0)+sin(b)*sin(pi/3.0)
     pf3 = np.exp(1j*q*d*sin(a)*pos3)
 
     # form factor amplitude
@@ -316,8 +314,8 @@ def P_cylinder_dimer(q,R,L1,L2,p1,p2):
     Form factor: cylinder dimer
     """
     
-    N_alpha,alpha_max = 100,np.pi/2
-    N_beta,beta_max = 100,np.pi
+    N_alpha,alpha_max = 100,pi/2
+    N_beta,beta_max = 100,pi
     alpha = np.linspace(alpha_max/N_alpha,alpha_max,N_alpha)
     beta = np.linspace(beta_max/N_beta,beta_max,N_beta)
 
@@ -338,8 +336,8 @@ def P_cylinder_trimer(q,R,L1,L2,L3,p1,p2,p3):
     Form factor: cylinder trimer
     """
     
-    N_alpha,alpha_max = 50,np.pi
-    N_beta,beta_max = 50,2*np.pi
+    N_alpha,alpha_max = 50,pi
+    N_beta,beta_max = 50,2*pi
     alpha = np.linspace(alpha_max/N_alpha,alpha_max,N_alpha)
     beta = np.linspace(beta_max/N_beta,beta_max,N_beta)
     M = len(q)
@@ -715,8 +713,8 @@ def calc_G(A,eta):
     a = (1+2*eta)**2/(1-eta)**4
     b = -6*eta*(1+eta/2)**2/(1-eta)**4 
     c = eta * a/2
-    sinA = np.sin(A)
-    cosA = np.cos(A)
+    sinA = sin(A)
+    cosA = cos(A)
     fa = sinA-A*cosA
     fb = 2*A*sinA+(2-A**2)*cosA-2
     fc = -A**4*cosA + 4*((3*A**2-6)*cosA+(A**3-6*A)*sinA+6)
@@ -805,7 +803,7 @@ def P_coreshell3_rasberry(q,r1,r2,r3,r4,p1,p2,p3,p4):
     V1,V2,V3,V4 = V_sphere(r1),V_sphere(r2),V_sphere(r3),V_sphere(r4)
     b_s = V1*p1 + (V2-V1)*p2 + (V3-V2)*p2
     b_c = V4*p4
-    N_agg = (r3+r4)*np.pi/r4
+    N_agg = (r3+r4)*pi/r4
     A = N_agg*b_s**2*P_s + b_c**2*P_c + (N_agg-1)*b_c**2*S_cc + 2*N_agg*b_s*b_c*S_sc
     B = N_agg*b_s**2 + b_c**2 + (N_agg-1)*b_c**2 + 2*N_agg*b_s*b_c
     return A/B

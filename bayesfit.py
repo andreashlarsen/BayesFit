@@ -1,7 +1,7 @@
 
 """
-bayesfit
-version 2.6
+BayesFit
+version 2.7
 
 see instructions for running at https://github.com/andreashlarsen/BayesFit
 
@@ -24,7 +24,7 @@ from shutil import rmtree
 ### IMPORT OWN PYTHON FUNCTIONS ###
 ###################################
 from bayesfit_functions import *
-from function import function
+#from function import function
 import formfactors as ff
 
 ##########################
@@ -304,7 +304,7 @@ print('-- OUTPUT: PROGRESS LOGALPHA SCAN --')
 for ia in range(logalpha_n):
     alpha = 10**logalpha_scan[ia]
     a = np.sqrt(alpha)
-    func = function(a,K,M,model)
+    func = convert_function(a,K,M,model)
     
     # merge q_merge,I_merge and dI_merge with p,dp
     q_dummy = np.ones(K)*99
