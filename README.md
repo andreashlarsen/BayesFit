@@ -8,7 +8,6 @@ BayesFit allow users to fit analytical models (form factors and structure factor
 Download the scripts from this repository and run BayesFit as a standard Python3 script.  
 The following python scripts should be in the same folder as bayesfit.py:    
 * bayesfit_functions.py
-* function.py
 * formfactors.py
 
 ## Running the program
