@@ -203,76 +203,79 @@ PLOT_POST_IN = input('   (y)es or (n)o : ')
 PLOT_POST = check_input(PLOT_POST_IN,0)
 
 ## SET WEIGHT IN MINIMIZATION
-print('-- INPUT: WEIGHT SCHEME --')
-print('   available weight schemes:')
-print('   0: chisquare (not reduced chi-square) - default weight scheme')
-print('   1: chisquare/M (M: number of points in dataset)')
-print('   2: Ng*chisquare/M (Ng: number of good parameters, as provided by user)')
-print('   10: only consider the 1st dataset')
-print('   11: only consider the 2nd dataset')
-print('   12: only consider the 3rd dataset')
-print('   13: only consider the 4th dataset')
-print('   14: only consider the 5th dataset')
-WEIGHT_IN = input('   select weight scheme : ')
-if not WEIGHT_IN:
-    WEIGHT = 0
-    print('\n      default weight scheme used (0: chisquare)')
-else:
-    WEIGHT = int(WEIGHT_IN)
-weights = np.ones(Ncontrasts) 
-tiny = 1e-10 # not zero to avoid division by zero
-string_weight = '\n      selected weight scheme:'
-if WEIGHT == 0:
-    print('%s %d, chisquare' % (string_weight,WEIGHT))
-elif WEIGHT == 1:
-    print('%s %d, chi2square/M)' % (string_weight,WEIGHT))
-    weights *= np.array(M)**-0.5
-elif WEIGHT == 2:
-    print('%s %d: sum(Ng*chisquare/M)' % (string_weight,WEIGHT))
-    Ng_BIFT = np.ones(Ncontrasts)
-    for ii in range(Ncontrasts):
-        Ng_ii = input()
-        Ng_BIFT[ii] = float(Ng_ii)
-        print('      Ng of dataset %d: %s' % (ii,Ng_ii))
-    weights *= (Ng_BIFT/np.array(M))**0.5
-elif WEIGHT == 3:
-    print('%s %d, first dataset not considered' % (string_weight,WEIGHT))
-    weights[0] = tiny
-elif WEIGHT == 4:
-    print('%s %d, second dataset not considered' % (string_weight,WEIGHT))
-    weights[1] = tiny
-elif WEIGHT == 10:
-    print('%s %d, only first dataset considered' % (string_weight,WEIGHT))
-    weights *= tiny
-    weights[0] = 1
-elif WEIGHT == 11:
-    print('%s %d, only second dataset considered' % (string_weight,WEIGHT))
-    weights *= tiny
-    weights[1] = 1
-elif WEIGHT == 12:
-    print('%s %d, only third dataset considered' % (string_weight,WEIGHT))
-    weights *= tiny
-    weights[2] = 1
-elif WEIGHT == 13:
-    print('%s %d, only forth dataset considered' % (string_weight,WEIGHT))
-    weights *= tiny
-    weights[3] = 1
-elif WEIGHT == 14:
-    print('%s %d, only fifth dataset considered' % (string_weight,WEIGHT))
-    weights *= tiny
-    weights[4] = 1
-else:
-    print('%s %d' % (string_weight,WEIGHT))
-    print('      ERROR: selected weight scheme must be between 0 and 4 or between 10 and 14')
-    exit(-1)
-print(' ')
+if Ncontrasts > 1:
+    print('-- INPUT: WEIGHT SCHEME --')
+    print('   available weight schemes:')
+    print('   0: chisquare (not reduced chi-square) - default weight scheme')
+    print('   1: chisquare/M (M: number of points in dataset)')
+    print('   2: Ng*chisquare/M (Ng: number of good parameters, as provided by user)')
+    print('   10: only consider the 1st dataset')
+    print('   11: only consider the 2nd dataset')
+    print('   12: only consider the 3rd dataset')
+    print('   13: only consider the 4th dataset')
+    print('   14: only consider the 5th dataset')
+    WEIGHT_IN = input('   select weight scheme : ')
+    if not WEIGHT_IN:
+        WEIGHT = 0
+        print('\n      default weight scheme used (0: chisquare)')
+    else:
+        WEIGHT = int(WEIGHT_IN)
+    weights = np.ones(Ncontrasts) 
+    tiny = 1e-10 # not zero to avoid division by zero
+    string_weight = '\n      selected weight scheme:'
+    if WEIGHT == 0:
+        print('%s %d, chisquare' % (string_weight,WEIGHT))
+    elif WEIGHT == 1:
+        print('%s %d, chi2square/M)' % (string_weight,WEIGHT))
+        weights *= np.array(M)**-0.5
+    elif WEIGHT == 2:
+        print('%s %d: sum(Ng*chisquare/M)' % (string_weight,WEIGHT))
+        Ng_BIFT = np.ones(Ncontrasts)
+        for ii in range(Ncontrasts):
+            Ng_ii = input()
+            Ng_BIFT[ii] = float(Ng_ii)
+            print('      Ng of dataset %d: %s' % (ii,Ng_ii))
+        weights *= (Ng_BIFT/np.array(M))**0.5
+    elif WEIGHT == 3:
+        print('%s %d, first dataset not considered' % (string_weight,WEIGHT))
+        weights[0] = tiny
+    elif WEIGHT == 4:
+        print('%s %d, second dataset not considered' % (string_weight,WEIGHT))
+        weights[1] = tiny
+    elif WEIGHT == 10:
+        print('%s %d, only first dataset considered' % (string_weight,WEIGHT))
+        weights *= tiny
+        weights[0] = 1
+    elif WEIGHT == 11:
+        print('%s %d, only second dataset considered' % (string_weight,WEIGHT))
+        weights *= tiny
+        weights[1] = 1
+    elif WEIGHT == 12:
+        print('%s %d, only third dataset considered' % (string_weight,WEIGHT))
+        weights *= tiny
+        weights[2] = 1
+    elif WEIGHT == 13:
+        print('%s %d, only forth dataset considered' % (string_weight,WEIGHT))
+        weights *= tiny
+        weights[3] = 1
+    elif WEIGHT == 14:
+        print('%s %d, only fifth dataset considered' % (string_weight,WEIGHT))
+        weights *= tiny
+        weights[4] = 1
+    else:
+        print('%s %d' % (string_weight,WEIGHT))
+        print('      ERROR: selected weight scheme must be between 0 and 4 or between 10 and 14')
+        exit(-1)
+    print(' ')
 
-## merge q, I and dI from all datasets using weights
-q_merge,I_merge,dI_merge = [],[],[]
-for ii in range(Ncontrasts):
-    q_merge = np.concatenate((q_merge,q[ii]),axis=None)
-    I_merge = np.concatenate((I_merge,I[ii]),axis=None)
-    dI_merge = np.concatenate((dI_merge,dI[ii]/weights[ii]),axis=None)
+    ## merge q, I and dI from all datasets using weights
+    q_merge,I_merge,dI_merge = [],[],[]
+    for ii in range(Ncontrasts):
+        q_merge = np.concatenate((q_merge,q[ii]),axis=None)
+        I_merge = np.concatenate((I_merge,I[ii]),axis=None)
+        dI_merge = np.concatenate((dI_merge,dI[ii]/weights[ii]),axis=None)
+else:
+    q_merge,I_merge,dI_merge = q[0],I[0],dI[0] 
 
 ##############################
 ### FINISHED READING INPUT ###
