@@ -70,7 +70,6 @@ cylinder
 -5 5 20
 yes
 no
-
 ```
 and run bayesapp using this inputfile:    
 ```
@@ -83,8 +82,8 @@ to fith the simulated data of a core-multishell particle (parameters described i
 ```
 output_fit_coreshell
 2
-examples/coreshell/Isim1.dat
-examples/coreshell/Isim2.dat
+examples/coreshell/data/Isim1.dat
+examples/coreshell/data/Isim2.dat
 coreshell4_ratio_2
 10 5 0
 30 10 0
@@ -96,10 +95,11 @@ coreshell4_ratio_2
 -0.1 0.01
 0.1 0.01
 0.05 0.005
-1e-5 1e-2
-0.8 0.08
+0.5 0.05 0
 1e-4 1e-2
--1.5 2 12
+0.8 0.08 0
+1e-4 1e-2
+-2 10 20
 yes
 no
 0
