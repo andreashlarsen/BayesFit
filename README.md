@@ -32,7 +32,6 @@ line 7 : prior values for the third parameter
 line 8 : logalpha values (default: -5 5 15)    
 line 9 : plot data (default: yes)
 line 10: plot posterior distributions (default: no)
-line 11: leave blank
 ```
 for a model with 4 parameters, fitted against two dataset, and weighted with the information content, the inputfile should have the form:    
 ```
@@ -70,7 +69,6 @@ cylinder
 -5 5 20
 yes
 no
-
 ```
 and run bayesapp using this inputfile:    
 ```
