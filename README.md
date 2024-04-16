@@ -15,7 +15,7 @@ The following python scripts should be in the same folder as bayesfit.py:
 python bayesfit.py
 ```
 the program will prompt you for options (pressing enter gives you the default option).       
-Alternatively, the input can be given via an inputfile (a plain text file): 
+Alternatively, the input can be given via an input file (a plain text file with each line being an input): 
 ```
 python bayesfit.py < inputfile.txt
 ```
