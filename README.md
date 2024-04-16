@@ -1,5 +1,5 @@
 # BayesFit
-version 2.6
+version 2.7
 
 ### Description 
 BayesFit allow users to fit analytical models (form factors and structure factors) to SAXS and/or SANS data using Bayesian refinement.
@@ -124,6 +124,7 @@ please cite:
 * allow for simultaneous fitting of multiple datasets
 
 ##### version 2.7
+* reorganization of helpfunctions    
 
 
 
