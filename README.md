@@ -20,7 +20,7 @@ Alternatively, the input can be given via an input file (a plain text file with 
 python bayesfit.py < inputfile.txt
 ```
 where each line in the inputfile corresponds to the options that are prompted for (default value are used if line is left blank). 
-for model with 3 parameters, fitted against a single dataset, the inputfile has the form:    
+For a model with 3 parameters, fitted against a single dataset, the inputfile has the form:    
 ```
 line 1 : output directory (default: output_bayesfit)    
 line 2 : number of contrasts (default: 1)    
