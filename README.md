@@ -55,8 +55,8 @@ line 15: information content of dataset 2 (only used if weighting scheme is set 
 ## Examples
 
 ### cylinder model, single dataset
-data were simulated using Shape2SAS and is available in the example folder.    
-to fit the simulated data of monodisperse cylinders (parameters: radius, length, scale and background), use input_cylinder.txt:     
+Data were simulated using Shape2SAS and is available in the example folder.    
+To fit the simulated data of monodisperse cylinders (parameters: radius, length, scale and background), use input_cylinder.txt:     
 ```
 output_fit_fylinder
 1
@@ -76,8 +76,8 @@ python bayesfit.py < examples/cylinder/input_cylinder.txt
 ```
 
 ### core-multishell model, two datasets 
-data were simulated as described in Larsen2024 and is available in the example folder.    
-to fith the simulated data of a core-multishell particle (parameters described in Larsen2024), use input_coreshell.txt:
+Data were simulated as described in reference (Larsen, 2024) and is available in the example folder.    
+To fith the simulated data of a core-multishell particle, use input_coreshell.txt:
 ```
 output_fit_coreshell
 2
@@ -103,7 +103,7 @@ yes
 no
 0
 ```
-and run bayesapp using this inputfile:    
+and run bayesapp:    
 ```
 python bayesfit.py < examples/coreshell/input_coreshell.txt
 ```
@@ -117,9 +117,9 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 ### Release notes     
 
 #### BayesFit version 2 major updates:       
-* written in Python3 instead of Fortran     
-* documented (at GitHub and in the source code)    
-* allow for simultaneous fitting of multiple datasets
+* written in Python3 instead of Fortran.     
+* documented (at GitHub and in the source code).    
+* simultaneous fitting of multiple datasets.
 
 ##### version 2.7
 * reorganization of helpfunctions
