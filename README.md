@@ -109,16 +109,19 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 ```
 
 ### If you use BayesFit, please cite 
-* Larsen, Arleth and Hansen 2018 (BayesFit version 1):     
-  * https://doi.org/10.1107/S1600576718008956
-* Larsen 2024 (BayesFit version 2 - this version):    
-  * https://arxiv.org/abs/2311.06408
+* Larsen, Arleth and Hansen (2018), J. Appl. Cryst. 51:  1151-1161 [https://doi.org/10.1107/S1600576718008956]
+* Larsen (2024) arXiv 2311.06408 [https://arxiv.org/abs/2311.06408]
  
 ### Release notes     
 
+#### BayesFit verison 1
+* this version was used in Larsen et al.
+* written in Fortran by Steen Hansen and Andreas Larsen
+* this version is no longer maintained. Archived at the old repository: github.com/Niels-Bohr-Institute-XNS-StructBiophys/BayesFit    
+  
 #### BayesFit version 2 major updates:       
-* written in Python3 instead of Fortran.     
-* documented (at GitHub and in the source code).    
+* written in Python3 by Andreas Larsen.     
+* improved documentation (at GitHub and in the source code).    
 * simultaneous fitting of multiple datasets.
 
 ##### version 2.7
