@@ -115,7 +115,7 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 ### Release notes     
 
 #### BayesFit verison 1
-* this version was used in Larsen et al.
+* this version was used in Larsen et al. 2018
 * written in Fortran by Steen Hansen and Andreas Larsen
 * this version is no longer maintained. Archived at the old repository: github.com/Niels-Bohr-Institute-XNS-StructBiophys/BayesFit    
   
