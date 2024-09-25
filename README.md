@@ -117,12 +117,16 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 #### BayesFit verison 1
 * this version was used in Larsen et al. 2018
 * written in Fortran by Steen Hansen and Andreas Larsen
-* this version is no longer maintained. Archived at the old repository: github.com/Niels-Bohr-Institute-XNS-StructBiophys/BayesFit    
+* this version is no longer maintained. Archived at the old repository: github.com/Niels-Bohr-Institute-XNS-StructBiophys/BayesFit   
+* 3 form factors available: core-shell, micelle, and nanodisc
+* GUI available at https://somo.chem.utk.edu/bayesfit/    
   
 #### BayesFit version 2 major updates:       
 * written in Python3 by Andreas Larsen.     
 * improved documentation (at GitHub and in the source code).    
 * simultaneous fitting of multiple datasets.
+* more than 20 models available
+* no GUI available, the strategy is instead to include functionality in larger packages, such as SasView or WillItFit.   
 
 ##### version 2.7
 * reorganization of helpfunctions
