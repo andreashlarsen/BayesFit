@@ -55,7 +55,7 @@ line 15: information content of dataset 2 (only used if weighting scheme is set 
 ## Examples
 
 ### cylinder model, single dataset
-Data were simulated using Shape2SAS and is available in the example folder.    
+Data were simulated using [Shape2SAS](https://github.com/ehb54/GenApp-Shape2SAS) and is available in the example folder.    
 To fit the simulated data of monodisperse cylinders (parameters: radius, length, scale and background), use input_cylinder.txt:     
 ```
 output_fit_fylinder
@@ -76,7 +76,7 @@ python bayesfit.py < examples/cylinder/input_cylinder.txt
 ```
 
 ### core-multishell model, two datasets 
-Data were simulated as described in reference (Larsen, 2024) and is available in the example folder.    
+Data is available in the example folder. It was simulated and fitted to investigate the best weigting scheme for simultaneous fitting of multiple SAXS or SANS datasets (Larsen, 2024).    
 To fith the simulated data of a core-multishell particle, use input_coreshell.txt:
 ```
 output_fit_coreshell
@@ -110,7 +110,7 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 
 ### If you use BayesFit, please cite 
 * Larsen, Arleth and Hansen (2018), J. Appl. Cryst. 51:  1151-1161 [https://doi.org/10.1107/S1600576718008956]
-* Larsen (2024) arXiv 2311.06408 [https://arxiv.org/abs/2311.06408]
+* Larsen (2024) ArXiv 2311.06408 [https://arxiv.org/abs/2311.06408]
  
 ### Release notes     
 
@@ -118,15 +118,15 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 * this version was used in Larsen et al. 2018
 * written in Fortran by Steen Hansen and Andreas Larsen
 * this version is no longer maintained. Archived at the old repository: github.com/Niels-Bohr-Institute-XNS-StructBiophys/BayesFit   
-* 3 form factors available: core-shell, micelle, and nanodisc
-* GUI available at https://somo.chem.utk.edu/bayesfit/    
+* 3 form factors are available: core-shell, micelle, and nanodisc
+* GUI available at https://somo.chem.utk.edu/bayesfit/ (but not maintained)    
   
 #### BayesFit version 2 major updates:       
 * written in Python3 by Andreas Larsen.     
 * improved documentation (at GitHub and in the source code).    
 * simultaneous fitting of multiple datasets.
 * more than 20 models available
-* no GUI available, the strategy is instead to include functionality in larger packages with GUIs, such as [SasView](https://sasview.org) or [WillItFit](https://sourceforge.net/projects/willitfit/).   
+* no GUI available, the strategy is instead to include functionality in larger packages for analysis of SAXS/SANS data, with GUIs, such as [SasView](https://sasview.org) or [WillItFit](https://sourceforge.net/projects/willitfit/).   
 
 ##### version 2.7
 * reorganization of helpfunctions
