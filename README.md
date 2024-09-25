@@ -126,7 +126,7 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 * improved documentation (at GitHub and in the source code).    
 * simultaneous fitting of multiple datasets.
 * more than 20 models available
-* no GUI available, the strategy is instead to include functionality in larger packages, such as [SasView](https://sasview.org) or WillItFit.   
+* no GUI available, the strategy is instead to include functionality in larger packages with GUIs, such as [SasView](https://sasview.org) or [WillItFit](https://sourceforge.net/projects/willitfit/).   
 
 ##### version 2.7
 * reorganization of helpfunctions
