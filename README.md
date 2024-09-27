@@ -1,5 +1,5 @@
 # BayesFit
-version 2.7
+version 2.8
 
 ### Description 
 BayesFit allow users to fit analytical models (form factors and structure factors) to SAXS and/or SANS data using Bayesian refinement.
@@ -130,7 +130,12 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 
 ##### version 2.7
 * reorganization of helpfunctions
-* addition of examples       
+* addition of examples
+
+##### version 2.8
+* additoin of models
+* clean-up of code
+* less and more relevant output
 
 
 
