@@ -1,7 +1,6 @@
-
 """
 BayesFit
-version 2.7
+version 2.8
 
 see instructions for running at https://github.com/andreashlarsen/BayesFit
 
@@ -24,12 +23,11 @@ from shutil import rmtree
 ### IMPORT OWN PYTHON FUNCTIONS ###
 ###################################
 from bayesfit_functions import *
-#from function import function
 import formfactors as ff
 
-##########################
-### PLOT ON LOG SCALE? ###
-##########################
+##############################
+### PLOT ON LOG-LOG SCALE? ###
+##############################
 LOG = 0
 
 #######################
@@ -107,8 +105,52 @@ models = [
           ['cylinder_dimer',ff.cylinder_dimer,['R','L','s','b']],
           ['cylinder_dimer_ratio',ff.cylinder_dimer_ratio,['R','L','p','s','b']],
           ['cylinder_trimer_ratio',ff.cylinder_trimer_ratio,['R','L','p1','p2','s','b']],
-          ['cylinder_trimer_ratio_L',ff.cylinder_trimer_ratio_L,['R','L1','L2','L3','p21','p31','s','b']],
+          ['cylinder_trimer_ratio_L',ff.cylinder_trimer_ratio_L,['R','L1','L2','L3','p21','p31','scaling','background']],
+          ['ellipsoid',ff.ellipsoid,['short_axis','long_axis','scaling','background']],
+          ['ellipsoid_eps',ff.ellipsoid_eps,['short_axis','elipticity','scaling','background']],
+          ['elliptical_cylinder',ff.elliptical_cylinder,['short_axis','length','elliticity','scaling','background']],
+          ['elliptical_cylinder_coreshell',ff.elliptical_cylinder_coreshell,['short_axis','length total','length core','elliticity','contrast shell/contrast core','scaling','background']],
+          ['elliptical_nanodisc',ff.elliptical_nanodisc,['short_axis','height total','height core','height belt','thickness belt','elliticity','contrast shell/core','contrast belt/core','scaling','background']],
+          ['elliptical_torus',ff.elliptical_torus,['short_axis','long_axis','radius','scaling','background']],
+          ['torus',ff.torus,['radius_cross_section','radius','scaling','background']],
+          ['supercylinder',ff.supercylinder,['radius','shape_parameter_t','ellipticity','scaling','background']],
+          ['hollow_supercylinder',ff.hollow_supercylinder,['radius','shape_parameter_t','ellipticity','hole_radius','scaling','background']],
+          ['hollow_supercylinder_torus',ff.hollow_supercylinder_torus,['radius','shape_parameter_t','ellipticity','hole_radius','torus_cross_radius','torus_center_radius','scaling','background']],
+          ['hollow_supercylinder_torus_smooth',ff.hollow_supercylinder_torus_smooth,['radius','shape_parameter_t','ellipticity','hole_radius','torus_cross_radius','torus_center_radius','smoothness','scaling','background']],
+          ['hollow_cylinder',ff.hollow_cylinder,['radius_inner','radius_outer','length','scaling','background']],
+          ['cylinder_torus',ff.cylinder_torus,['radius_inner','radius_outer','length','torus_cross_radius','torus_center_radius','torus_shift','scaling','background']],
+          ['cylinder_torus_fix',ff.cylinder_torus_fix,['cylinder_radius_inner','cylinder_length','torus_cross_radius','torus_center_radius','scaling','background']],
+          ['hollow_cylinders_spaced_torus_fix',ff.hollow_cylinders_spaced_torus_fix,['cylinder_radius_inner','cylinder_length','cylinder_space_distance','torus_cross_radius','torus_center_radius','scaling','background']],
+          ['cylinders_spaced',ff.cylinders_spaced,['cylinder_radius','length_total','length_space','scaling','background']],
+          ['hollow_cylinders_spaced',ff.hollow_cylinders_spaced,['inner_radius','outer_radius','length','distance_space','scaling','background']],
+          ['hollow_cylinder_crown',ff.hollow_cylinder_crown,['inner_radius','outer_radius','length','crown_inner_radius','crown_outer_radius','length_crown','crown_shift','scaling','background']],
+          ['ellipsoid_torus',ff.ellipsoid_torus,['minor_radius','ellipticity','torus_inner_radius','torus_outer_radius','torus_shift','scaling','background']],
+          ['tri_tori',ff.tri_tori,['cross-sec radius 1','center radius 1','cross sec radius 2','center radius 2','shift 2','cross sec radius 3','center radius 3','shift 3','scaling','background']],
+          ['four_tori',ff.four_tori,['cross-sec radius 1','center radius 1','cross sec radius 2','center radius 2','shift 2','cross sec radius 3','center radius 3','shift 3','cross sec radius 4','center radius 4','shift 4','scaling','background']],
+          ['four_tori_constraint',ff.four_tori_constraint,['cross section radius 1','center radius 1','cross section radius 3','cross section radius 4','center radius 4','spacer','scaling','background']],
+          ['four_elliptical_tori_constraint',ff.four_elliptical_tori_constraint,['cross section radius 1','ellipticity 1','center radius 1','cross section radius 3','ellipticity 3','cross section radius 4','center radius 4','ellipticity 4','scaling','background']],
+          ['ellipsoid_channel',ff.ellipsoid_channel,['ellipsoid_radius','ellipsoid_ellipticity','channel radius','channel_length','scaling','background']],
+          ['ellipsoid_channel_torus',ff.ellipsoid_channel_torus,['ellipsoid_radius','ellipsoid_ellipticity','channel radius','torus_cross_radius','torus_center_radius','scaling','background']],
+          ['MD_SAXS',ff.md_saxs,['w1','w2','w3','w4','w5','w6','w7','w8','w9','w10','scale','background']],
+          ['MD_SANS',ff.md_sans,['w1','w2','w3','w4','w5','w6','w7','w8','w9','w10','scale','background']],
+          ['MD_SAS',ff.md_sas,['w1','w2','w3','w4','w5','w6','w7','w8','w9','w10','sx','bx','sn','bn']],
+          ['MD_SAXS_w4',ff.md_saxs_w4,['w1','w2','w3','w4','sx','bx']],
+          ['MD_SANS_w4',ff.md_sans_w4,['w1','w2','w3','w4','sn','bn']],
+          ['MD_SAS_w4',ff.md_sas_w4,['w1','w2','w3','w4','sx','bx','sn','bn']],
+          ['MD_SAXS_w3',ff.md_saxs_w3,['w1','w2','w3','sx','bx']],
+          ['MD_SANS_w3',ff.md_sans_w3,['w1','w2','w3','sn','bn']],
+          ['MD_SAS_w3',ff.md_sas_w3,['w1','w2','w3','sx','bx','sn','bn']],
+          ['MD_SAXS_w2',ff.md_saxs_w2,['w1','w2','b1','b2']],
+          ['MD_SANS_w2',ff.md_sans_w2,['w1','w2','b1','b2']],
+          ['MD_SAS_w2',ff.md_sas_w2,['w1','w2','bx1','bx2','bn1','bn2']],
+          ['MD_SAXS_ff2_b',ff.md_saxs_ff2_b,['w1','w2','bx1','bx2']],
+          ['MD_SAXS_ff2',ff.md_saxs_ff2,['w1','w2']],
+          ['MD_SAXS_ff2_w1',ff.md_saxs_ff2_w1,['w1','scale']],
+          ['MD_SANS_ff2_w1',ff.md_sans_ff2_w1,['w1','scale']],
+          ['MD_SAS_ff2_w1',ff.md_sas_ff2_w1,['w1','scale_x','scale_n']],
+          ['MD_SAS_ff2_w1_nos',ff.md_sas_ff2_w1_nos,['w1']],
          ]
+
 for i in range(len(models)):
     name,model,p_name = models[i]
     print('   %d: %s' % (i,name))
@@ -171,8 +213,22 @@ for i in range(K):
                 lb[i] = np.max([lb_tmp,p0[i]-5*dp0[i]])
                 ub[i] = np.min([ub_tmp,p0[i]+5*dp0[i]])
             else:
+                print('\n\n!!')
                 print('      you should type between 1 and 4 prior values: mean, sigma, min, max')
                 print('      try again:')
+                print('\n\n!!')
+                CONTINUE=True
+            if lb[i] > p0[i]:
+                print('\n\n!!')
+                print('      lower bound (%f) should be smaller than the mean (%f)' % (lb[i],p0[i]))
+                print('      try again:')
+                print('\n\n!!')
+                CONTINUE=True
+            if ub[i] < p0[i]:
+                print('\n\n!!')
+                print('      upper bound (%f) should be larger than the mean (%f)' % (ub[i],p0[i]))
+                print('      try again:')
+                print('\n\n!!')
                 CONTINUE=True
         except:
             p0[i] = np.genfromtxt(StringIO(tmp),unpack=True)
@@ -187,10 +243,22 @@ tmp = input('   provide min max nsteps :')
 if not tmp:
     tmp = '-5 5 15'
     print('\n      default used')
-logalpha_min,logalpha_max,logalpha_n_tmp = np.genfromtxt(StringIO(tmp),unpack=True)
-logalpha_n = int(logalpha_n_tmp)
-logalpha_scan = np.linspace(logalpha_min,logalpha_max,logalpha_n)
-print('\n      selected logalpha scan: from %1.2f to %1.2f (n = %d)\n' % (logalpha_min,logalpha_max,logalpha_n))
+CALC=False
+try:
+    logalpha_min,logalpha_max,logalpha_n_tmp = np.genfromtxt(StringIO(tmp),unpack=True)
+    logalpha_n = int(logalpha_n_tmp)
+    logalpha_scan = np.linspace(logalpha_min,logalpha_max,logalpha_n)
+    print('\n      selected logalpha scan: from %1.2f to %1.2f (n = %d)\n' % (logalpha_min,logalpha_max,logalpha_n))
+except:
+    FIT = np.genfromtxt(StringIO(tmp),unpack=True)
+    if FIT:
+        print('\n      fit with alpha = 1\n')
+        logalpha_scan = [0]
+    else:
+        CALC=True
+        print('\n      calculate with default values, and alpha=1, no fitting\n')
+        logalpha_scan = [0]
+    logalpha_n = 1 
 
 ## PLOT DATA?
 print('-- INPUT: PLOT DATA? --')
@@ -206,9 +274,9 @@ PLOT_POST = check_input(PLOT_POST_IN,0)
 if Ncontrasts > 1:
     print('-- INPUT: WEIGHT SCHEME --')
     print('   available weight schemes:')
-    print('   0: chisquare (not reduced chi-square) - default weight scheme')
-    print('   1: chisquare/M (M: number of points in dataset)')
-    print('   2: Ng*chisquare/M (Ng: number of good parameters, as provided by user)')
+    print('   0: chi-square (not reduced chi-square) - default weight scheme')
+    print('   1: chi-square/M (M: number of points in dataset)')
+    print('   2: Ng*chi-square/M (Ng: number of good parameters, as provided by user)')
     print('   10: only consider the 1st dataset')
     print('   11: only consider the 2nd dataset')
     print('   12: only consider the 3rd dataset')
@@ -217,19 +285,19 @@ if Ncontrasts > 1:
     WEIGHT_IN = input('   select weight scheme : ')
     if not WEIGHT_IN:
         WEIGHT = 0
-        print('\n      default weight scheme used (0: chisquare)')
+        print('\n      default weight scheme used (0: chi-square)')
     else:
         WEIGHT = int(WEIGHT_IN)
     weights = np.ones(Ncontrasts) 
     tiny = 1e-10 # not zero to avoid division by zero
     string_weight = '\n      selected weight scheme:'
     if WEIGHT == 0:
-        print('%s %d, chisquare' % (string_weight,WEIGHT))
+        print('%s %d, chi-square' % (string_weight,WEIGHT))
     elif WEIGHT == 1:
-        print('%s %d, chi2square/M)' % (string_weight,WEIGHT))
+        print('%s %d, chi2-square/M' % (string_weight,WEIGHT))
         weights *= np.array(M)**-0.5
     elif WEIGHT == 2:
-        print('%s %d: sum(Ng*chisquare/M)' % (string_weight,WEIGHT))
+        print('%s %d: sum(Ng*chi-square/M)' % (string_weight,WEIGHT))
         Ng_BIFT = np.ones(Ncontrasts)
         for ii in range(Ncontrasts):
             Ng_ii = input()
@@ -316,8 +384,12 @@ for ia in range(logalpha_n):
     dy = np.concatenate((dI_merge,dp0),axis=None)
     
     # fit
-    popt,pcov = curve_fit(func,x,y,sigma=dy,absolute_sigma=True,p0=p0,bounds=(lb,ub))
-    dpopt = np.sqrt(np.diag(pcov)) 
+    if CALC:
+        popt = p0
+        dpopt = dp0
+    else:
+        popt,pcov = curve_fit(func,x,y,sigma=dy,absolute_sigma=True,p0=p0,bounds=(lb,ub),ftol=1e-3,xtol=1e-3)
+        dpopt = np.sqrt(np.diag(pcov)) 
     fit = get_fit(q,model,popt)
 
     # calc chi2 and chi2r
@@ -338,42 +410,47 @@ for ia in range(logalpha_n):
 
     # calc Q 
     Q = chi2 + alpha*S
-
-    # estimate matrices B = nabla nabla chi2
+    
+    # estimate matrix B = nabla nabla chi2
     # BB is the unitless version of B, also without factor 2
-    BB = np.zeros((K,K))
-    dI2 = dI_merge**2.0
-    BB_ii,dI2_ii = [],[]
-    for ii in range(Ncontrasts):
-        BB_ii.append(np.zeros((K,K)))
-        dI2_ii.append(dI[ii]**2.0)
-    eps = 0.001
-    for i in range(K):
-        di = popt[i]*eps
-        popt[i] += di
-        fit_plus = get_fit(q,model,popt)
-        popt[i] -= di
-        dIdi = (fit_merge(fit) - fit_merge(fit_plus))/di
-        dIdi_ii = []
+    def get_BB(K,dI_merge,Ncontrasts,dI,popt,q,model,fit,dp0):
+        BB = np.zeros((K,K))
+        dI2 = dI_merge**2.0
+        BB_ii,dI2_ii = [],[]
         for ii in range(Ncontrasts):
-            dIdi_ii.append((fit[ii] - fit_plus[ii])/di)
-        for j in range(K):
-            dj = popt[j]*eps
-            popt[j] += dj
+            BB_ii.append(np.zeros((K,K)))
+            dI2_ii.append(dI[ii]**2.0)
+        eps = 0.001
+        for i in range(K):
+            di = popt[i]*eps
+            popt[i] += di
             fit_plus = get_fit(q,model,popt)
-            popt[j] -= dj
-            dIdj = (fit_merge(fit) - fit_merge(fit_plus))/dj
-            dI2dr = 2*np.sum(dIdi*dIdj/dI2)
-            dp2 = dp0[i]*dp0[j]
-            BB[i,j] = dI2dr*dp2/2.0
+            popt[i] -= di
+            dIdi = (fit_merge(fit) - fit_merge(fit_plus))/di
+            dIdi_ii = []
             for ii in range(Ncontrasts):
-                dIdj_ii = (fit[ii] - fit_plus[ii])/dj
-                dI2dr_ii = 2*np.sum(dIdi_ii[ii]*dIdj_ii/dI2_ii[ii])
-                BB_ii[ii][i,j] = dI2dr_ii*dp2/2.0
+                dIdi_ii.append((fit[ii] - fit_plus[ii])/di)
+            for j in range(K):
+                dj = popt[j]*eps
+                popt[j] += dj
+                fit_plus = get_fit(q,model,popt)
+                popt[j] -= dj
+                dIdj = (fit_merge(fit) - fit_merge(fit_plus))/dj
+                dI2dr = 2*np.sum(dIdi*dIdj/dI2)
+                dp2 = dp0[i]*dp0[j]
+                BB[i,j] = dI2dr*dp2/2.0
+                for ii in range(Ncontrasts):
+                    dIdj_ii = (fit[ii] - fit_plus[ii])/dj
+                    dI2dr_ii = 2*np.sum(dIdi_ii[ii]*dIdj_ii/dI2_ii[ii])
+                    BB_ii[ii][i,j] = dI2dr_ii*dp2/2.0
+        return BB,BB_ii
+    BB,BB_ii = get_BB(K,dI_merge,Ncontrasts,dI,popt,q,model,fit,dp0)
 
+    # calc number of good parameters
     etaBB = np.linalg.eigh(BB)[0]
     Ng[ia] = np.sum(etaBB/(alpha+etaBB))
-
+    
+    # calc number of good parameters for each dataset
     Ng_ii = np.zeros(Ncontrasts)
     for ii in range(Ncontrasts):
         #etaBB_ii = np.linalg.eig(BB_ii[ii])[0]
@@ -381,7 +458,10 @@ for ia in range(logalpha_n):
         Ng_ii[ii] = np.sum(etaBB_ii/(alpha+etaBB_ii))
     Ng_sum = np.sum(Ng_ii)
     fraction = Ng_ii[ii]/Ng_sum
-    wx = (1-fraction)/(Ncontrasts-1)
+    if Ncontrasts > 1:
+        wx = (1-fraction)/(Ncontrasts-1)
+    else:
+        wx = 1
     Ng_X_ii = Ng_ii - wx*(Ng_sum-Ng[ia])
 
     # matrix C = nabla nabla Q
@@ -410,7 +490,7 @@ for ia in range(logalpha_n):
 
     # score function G (denoted "evidence" in Hansen2000 and Larsen2018)
     G[ia] = Q + logT + jef
-    aS = alpha*S
+    #aS = alpha*S
 
     # add to lists
     p_list.append(popt)
@@ -465,9 +545,10 @@ for ii in range(Ncontrasts):
 print('-- OUTPUT: GOODNESS OF FIT --')
 chi2r_Ng = chi2r_av*(M_merge-K)/(M_merge-Ng_av)
 chi2r_M  = chi2r_av*(M_merge-K)/M_merge
-print('   chi2r_K = %1.6f' % chi2r_av)
-print('   chi2r_Ng = %1.6f' % chi2r_Ng)     
-print('   chi2r_M = %1.6f' % chi2r_M) 
+#print('   chi2r_K = %1.6f' % chi2r_av)
+#print('   chi2r_Ng = %1.6f' % chi2r_Ng)     
+#print('   chi2r_M = %1.6f' % chi2r_M) 
+print('   reduced chi-square (total) = %1.6f' % chi2r_Ng)     
 if Ncontrasts > 1:
     for ii in range(Ncontrasts):
         chi2 = chi2r_ii_av[ii]*(M[ii]-K)
@@ -476,20 +557,15 @@ if Ncontrasts > 1:
         chi2r_ii_av_M = chi2/M[ii]
         chi2r_ii_av_Ng_ii = chi2/(M[ii]-Ng_ii_av[ii])
         chi2r_ii_av_Ng_X_ii = chi2/(M[ii]-Ng_X_ii_av[ii])
-        print('   chi2r_%d_K = %1.6f' % (ii,chi2r_ii_av_K))
-        print('   chi2r_%d_Ng_tot = %1.6f' % (ii,chi2r_ii_av_Ng_tot))
-        print('   chi2r_%d_Ng_%d = %1.6f' % (ii,ii,chi2r_ii_av_Ng_ii))
-        print('   chi2r_%d_Ng_X_%d = %1.6f' % (ii,ii,chi2r_ii_av_Ng_X_ii))
-        print('   chi2r_%d_M = %1.6f' % (ii,chi2r_ii_av_M)) 
+        print('   reduced chi-square for dataset %d = %1.6f' % (ii,chi2r_ii_av_Ng_X_ii))
 print(' ')
 
 ## OUTPUT: INFORMATION CONTENT (Number of good parameters)
 print('-- OUTPUT: INFORMATION GAIN --')
 print('   logalpha of minimum = %1.6f' % logalpha_av)
-print('   Ng_tot = %1.6f out of %d' % (Ng_av,K))
+print('   Number of good parameters (total) = %1.6f out of %d' % (Ng_av,K))
 for ii in range(Ncontrasts):
-    print('   Ng for dataset %d = %1.6f out of %d' % (ii,Ng_ii_av[ii],K))
-    print('   Ng_X for dataset %d = %1.6f out of %d' % (ii,Ng_X_ii_av[ii],K))
+    print('   Number of good parameters for dataset %d = %1.6f' % (ii,Ng_X_ii_av[ii]))
 print(' ')
 
 ## OUTPUT: TIMING
@@ -510,7 +586,7 @@ for i in range(K):
     prior_pdf_uniform = np.ones(len(x))/len(x)
     kld = kl_divergence(posterior_pdf,prior_pdf)
     kld_uniform = kl_divergence(posterior_pdf,prior_pdf_uniform)
-    print('   %s = %f +/- %f, kld_normal = %1.1f, kld_uniform = %1.1f' % (p_name[i],p[i],dp[i],kld,kld_uniform))
+    print('   %s = %f +/- %f' % (p_name[i],p[i],dp[i]))
 
     # plot prior and posterior distributions
     if PLOT_POST:         
@@ -543,10 +619,13 @@ if PLOT:
     Rmax = 0
     for i in range(Ncontrasts):
         R = (I[i]-fit_av[i])/dI[i]
+        Rprior = (I[i]-Iprior[i])/dI[i]
+        chi2_prior = np.sum(Rprior**2)
+        chi2r_prior = chi2_prior/len(I[i])
         p0.errorbar(q[i],offset[i]*I[i],yerr=offset[i]*dI[i],linestyle='none',marker='.',color=color[i],label=dataname[i],zorder=100+i)
         if i == 0:
-            p0.plot(q[i],offset[i]*Iprior[i],linestyle='--',color='grey',label='prior',zorder=300+i)
-            p0.plot(q[i],offset[i]*fit_av[i],color='black',label='fit chi2r = %1.2f' % chi2r_Ng,zorder=200+i)
+            p0.plot(q[i],offset[i]*Iprior[i],linestyle='--',color='grey',label=r'prior $\chi^2_r = %1.2f$' % chi2r_prior,zorder=300+i)
+            p0.plot(q[i],offset[i]*fit_av[i],color='black',label=r'fit $\chi^2_r = %1.2f$' % chi2r_Ng,zorder=200+i)
         else: 
             p0.plot(q[i],offset[i]*Iprior[i],linestyle='--',color='grey',zorder=300+i)
             p0.plot(q[i],offset[i]*fit_av[i],color='black',zorder=200+i)
@@ -555,22 +634,25 @@ if PLOT:
         if Rmax_i > Rmax:
             Rmax = Rmax_i
     Rmax = np.ceil(Rmax)
-    p1.plot(q[i],np.zeros(len(q[i])),color='black')
+    xlim = p0.get_xlim()
+    p1.plot(xlim,np.zeros(2),color='black')
     if Rmax > 3:
         p1.set_ylim(-Rmax,Rmax)
         if Rmax < 10:
             p1.set_yticks([-Rmax,-3,0,3,Rmax])
-            p1.plot(q[i],np.ones(len(q[i]))*-3,color='grey',linestyle='--')
-            p1.plot(q[i],np.ones(len(q[i]))*3,color='grey',linestyle='--')
+            p1.plot(xlim,np.ones(2)*-3,color='black',linestyle='--')
+            p1.plot(xlim,np.ones(2)*3,color='black',linestyle='--')
         else:
             p1.set_yticks([-Rmax,0,Rmax])
     if LOG:
         p0.set_xscale('log')
         p1.set_xscale('log')    
     p0.set_yscale('log')
-    p1.set_xlabel(r'$q$')
+    p1.set_xlabel(r'$q$ [$\AA^{-1}$]')
     p0.set_ylabel(r'$I(q)$')
+    p1.set_ylabel(r'$\Delta I/\sigma$')
     p0.legend(frameon=False)
+    plt.savefig('fit.pdf')
     plt.show()
 print(' ')
     
