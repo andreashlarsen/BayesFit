@@ -133,7 +133,7 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 * addition of examples
 
 ##### version 2.8
-* additoin of models
+* addition of models
 * clean-up of code
 * less and more relevant output
 
