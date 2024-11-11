@@ -77,7 +77,7 @@ python bayesfit.py < examples/cylinder/input_cylinder.txt
 
 ### core-multishell model, two datasets 
 Data is available in the example folder. It was simulated and fitted to investigate the best weigting scheme for simultaneous fitting of multiple SAXS or SANS datasets (Larsen, 2024).    
-To fith the simulated data of a core-multishell particle, use input_coreshell.txt:
+To fit the simulated data of a core-multishell particle, use input_coreshell.txt:
 ```
 output_fit_coreshell
 2
