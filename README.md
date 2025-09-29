@@ -108,9 +108,12 @@ and run bayesapp:
 python bayesfit.py < examples/coreshell/input_coreshell.txt
 ```
 
+### WARNING of accuracy of models
+A lot of models have been implemented for testing - some may not be accurate - please check yourself.   
+
 ### If you use BayesFit, please cite 
 * Larsen, Arleth and Hansen (2018), J. Appl. Cryst. 51:  1151-1161 [https://doi.org/10.1107/S1600576718008956]
-* Larsen (2024) ArXiv 2311.06408 [https://arxiv.org/abs/2311.06408]
+* Larsen (2024) J. Appl. Cryst. 58: 934-947 [https://doi.org/10.1107/S1600576725002390]
  
 ### Release notes     
 
@@ -125,7 +128,7 @@ python bayesfit.py < examples/coreshell/input_coreshell.txt
 * written in Python3 by Andreas Larsen.     
 * improved documentation (at GitHub and in the source code).    
 * simultaneous fitting of multiple datasets.
-* more than 20 models available
+* more than 20 models available.
 * no GUI available, the strategy is instead to include functionality in larger packages for analysis of SAXS/SANS data, with GUIs, such as [SasView](https://sasview.org) or [WillItFit](https://sourceforge.net/projects/willitfit/).   
 
 ##### version 2.7
